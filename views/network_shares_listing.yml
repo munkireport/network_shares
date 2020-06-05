@@ -1,0 +1,14 @@
+i18n_title: network_shares.reporttitle
+not_null_column: name
+table:
+  - column: machine.computer_name
+    i18n_header: listing.computername
+    formatter: clientDetail
+    tab_link: network_shares-tab
+  - column: reportdata.serial_number
+    i18n_header: serial
+  - {i18n_header: name, column: network_shares.name}
+  - {i18n_header: path, column: network_shares.mntfromname}
+  - {i18n_header: network_shares.fsmtnonname, column: network_shares.fsmtnonname}
+  - {i18n_header: type, column: network_shares.fstypename}
+  - {i18n_header: network_shares.automounted, column: network_shares.automounted, formatter: binaryYesNo}

@@ -31,6 +31,7 @@ def flatten_network_shares(array):
     out = []
     for obj in array:
         device = {'name': '', 'automounted': 0,}
+
         for item in obj:
             if item == '_items':
                 out = out + flatten_network_shares(obj['_items'])
@@ -50,23 +51,14 @@ def flatten_network_shares(array):
 
 def main():
     """Main"""
-    # Create cache dir if it does not exist
-    cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
-    if not os.path.exists(cachedir):
-        os.makedirs(cachedir)
-
-    # Skip manual check
-    if len(sys.argv) > 1:
-        if sys.argv[1] == 'manualcheck':
-            print 'Manual check: skipping'
-            exit(0)
 
     # Get results
     result = dict()
     info = get_network_shares()
     result = flatten_network_shares(info)
-    
+
     # Write network_shares results to cache
+    cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
     output_plist = os.path.join(cachedir, 'network_shares.plist')
     plistlib.writePlist(result, output_plist)
 

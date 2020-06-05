@@ -1,0 +1,12 @@
+client_tabs:
+    network_shares-tab:
+        view: network_shares_tab
+        i18n: network_shares.clienttab
+        badge: network_shares-cnt
+listings:
+    network_shares:
+        view: network_shares_listing
+        i18n: network_shares.clienttab
+widgets:
+    network_shares:
+        view: network_shares_widget

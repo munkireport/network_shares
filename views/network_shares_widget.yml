@@ -1,0 +1,8 @@
+type: scrollbox
+widget_id: network-shares-widget
+api_url: /module/network_shares/get_network_shares
+i18n_title: network_shares.clienttab
+icon: fa-folder-open
+listing_link: /show/listing/network_shares/network_shares
+search_key: name
+i18n_empty_result: network_shares.noshares

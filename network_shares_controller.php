@@ -34,37 +34,39 @@ class Network_shares_controller extends Module_controller
      **/
      public function get_network_shares()
      {
-        $obj = new View();
+        $sql = "SELECT COUNT(CASE WHEN name <> '' AND name IS NOT NULL THEN 1 END) AS count, name
+                    FROM network_shares
+                    LEFT JOIN reportdata USING (serial_number)
+                    ".get_machine_group_filter()."
+                    GROUP BY name
+                    ORDER BY count DESC";
 
-        if (! $this->authorized()) {
-            $obj->view('json', array('msg' => array('error' => 'Not authenticated')));
-            return;
-        }
-        
+        $out = array();
         $network_shares = new Network_shares_model;
-        $obj->view('json', array('msg' => $network_shares->get_network_shares()));
+
+        foreach ($network_shares->query($sql) as $obj) {
+            if ("$obj->count" !== "0") {
+                $obj->name = $obj->name ? $obj->name : 'Unknown';
+                $out[] = $obj;
+            }
+        }
+
+        jsonView($out);
      }
-    
+
 	/**
      * Retrieve data in json format
      *
      **/
      public function get_data($serial_number = '')
      {
-        $obj = new View();
-
-        if (! $this->authorized()) {
-            $obj->view('json', array('msg' => 'Not authorized'));
-            return;
-        }
-
         $queryobj = new Network_shares_model;
         $network_shares_tab = array();
         foreach($queryobj->retrieve_records($serial_number) as $shareEntry) {
             $network_shares_tab[] = $shareEntry->rs;
         }
 
-        $obj->view('json', array('msg' => $network_shares_tab));
+        jsonView($network_shares_tab);
      }
-		
+
 } // END class Network_shares_controller
