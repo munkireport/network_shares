@@ -50,7 +50,7 @@ def flatten_network_shares(array):
                 device['automounted'] = 1
         out.append(device)
     return out
-    
+
 
 def main():
     """Main"""

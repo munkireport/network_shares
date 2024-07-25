@@ -14,7 +14,7 @@ class NetworkSharesAddIndex extends Migration
             $table->index('serial_number');
         });
     }
-    
+
     public function down()
     {
         $capsule = new Capsule();

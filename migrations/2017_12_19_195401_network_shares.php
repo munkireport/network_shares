@@ -58,7 +58,7 @@ class NetworkShares extends Migration
             $table->index('automounted');
         });
     }
-    
+
     public function down()
     {
         $capsule = new Capsule();

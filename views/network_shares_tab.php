@@ -5,14 +5,14 @@
 
 <script>
 $(document).on('appReady', function(){
-	$.getJSON(appUrl + '/module/network_shares/get_data/' + serialNumber, function(data){
-                
+    $.getJSON(appUrl + '/module/network_shares/get_data/' + serialNumber, function(data){
+
         // Check if we have data
         if(!data[0]){
             $('#network_shares-msg').text(i18n.t('network_shares.noshares'));
             $('#network_shares-header').removeClass('hide');
             $('#network_shares-cnt').text("0");
-            
+
         } else {
 
             // Hide
@@ -34,16 +34,16 @@ $(document).on('appReady', function(){
                         }
                         else if(prop == 'automounted' && d[prop] == 0){
                            rows = rows + '<tr><th>'+i18n.t('network_shares.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
-                        } 
+                        }
                         else if(prop == 'name'){
                            rows = rows + '<tr><th>'+i18n.t('name')+'</th><td>'+d[prop]+'</td></tr>';
-                        } 
+                        }
                         else if(prop == 'mntfromname'){
                            rows = rows + '<tr><th>'+i18n.t('path')+'</th><td>'+d[prop]+'</td></tr>';
-                        } 
+                        }
                         else if(prop == 'fstypename'){
                            rows = rows + '<tr><th>'+i18n.t('type')+'</th><td>'+d[prop]+'</td></tr>';
-                        } 
+                        }
                         else {
                             rows = rows + '<tr><th>'+i18n.t('network_shares.'+prop)+'</th><td>'+d[prop]+'</td></tr>';
                         }
@@ -62,6 +62,6 @@ $(document).on('appReady', function(){
                                 .append(rows))))
             })
         }
-	});
+    });
 });
 </script>

@@ -18,7 +18,7 @@ class Network_shares_model extends \Model {
 		$this->serial_number = $serial;
 	}
 
-    // -----------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------
 
 	/**
 	 * Process data sent by postflight
@@ -28,7 +28,7 @@ class Network_shares_model extends \Model {
 	 **/
 	function process($plist)
 	{
-        // Check if we have data
+		// Check if we have data
 		if ( ! $plist){
 			throw new Exception("Error Processing Request: No property list found", 1);
 		}

@@ -8,25 +8,25 @@
  **/
 class Network_shares_controller extends Module_controller
 {
-	
-	/*** Protect methods with auth! ****/
-	function __construct()
-	{
-		// Store module path
-		$this->module_path = dirname(__FILE__);
-	}
 
-	/**
-	 * Default method
-	 * @author tuxudo
-	 *
-	 **/
-	function index()
-	{
-		echo "You've loaded the network_shares module!";
-	}
+    /*** Protect methods with auth! ****/
+    function __construct()
+    {
+        // Store module path
+        $this->module_path = dirname(__FILE__);
+    }
 
-	/**
+    /**
+    * Default method
+    * @author tuxudo
+    *
+    **/
+    function index()
+    {
+        echo "You've loaded the network_shares module!";
+    }
+
+    /**
      * Get network shares for widget
      *
      * @return void
@@ -54,7 +54,7 @@ class Network_shares_controller extends Module_controller
         jsonView($out);
      }
 
-	/**
+    /**
      * Retrieve data in json format
      *
      **/
